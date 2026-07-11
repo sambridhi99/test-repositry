@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aetheria | Celestial Sanctuary</title>
+    <style>
+        /* Import Divine Typography */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Montserrat:wght@200;300;400&display=swap');
+
+        :root {
+            --gold-glow: #fbf5df;
+            --angelic-gold: #f3e5ab;
+            --soft-white: #fcfbfa;
+            --cosmic-iris: #e0e7ff;
+            --divine-purple: #3b0764;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--soft-white);
+            background-color: #060913;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Celestial Atmosphere & Backgrounds --- */
+        
+        .sky-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #060913 0%, #0f1123 35%, #1d1233 70%, #2a0845 100%);
+            z-index: -3;
+        }
+
+        /* Floating Nebulous Clouds */
+        .nebula {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .nebula-1 {
+            top: -20%;
+            left: -10%;
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, rgba(192, 132, 252, 0.4) 0%, transparent 70%);
+            animation: drift 30s ease-in-out infinite alternate;
+        }
+
+        .nebula-2 {
+            bottom: -20%;
+            right: -10%;
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(147, 197, 253, 0.3) 0%, transparent 70%);
+            animation: drift 25s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(5%, 8%) scale(1.1); }
+        }
+
+        /* Subtle Shimmering Starfield */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 45px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
+            background-size: 550px 550px, 350px 350px;
+            background-position: 0 0, 40px 60px;
+            opacity: 0.25;
+            z-index: -1;
+            animation: pulseStars 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseStars {
+            0% { opacity: 0.2; }
+            100% { opacity: 0.4; }
+        }
+
+        /* --- Navigation --- */
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2.5rem 5rem;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(6, 9, 19, 0.5), transparent);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: 6px;
+            color: var(--soft-white);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3.5rem;
+        }
+
+        .nav-links a {
+            color: var(--soft-white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+            transition: all 0.5s ease;
+            opacity: 0.7;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: var(--angelic-gold);
+            transition: width 0.4s ease, left 0.4s ease;
+            box-shadow: 0 0 8px var(--angelic-gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--gold-glow);
+            text-shadow: 0 0 10px rgba(243, 229, 171, 0.5);
+        }
+
+        /* --- Hero Section --- */
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: etherealReveal 2.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .angelic-title {
+            font-family: 'Cinzel', serif;
+            font-size: 5.5rem;
+            font-weight: 400;
+            letter-spacing: 12px;
+            line-height: 1.25;
+            margin-bottom: 2rem;
+            background: linear-gradient(to bottom, #ffffff 30%, #fcf6e3 70%, #e1cc8f 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 200;
+            letter-spacing: 6px;
+            color: var(--cosmic-iris);
+            margin-bottom: 3.5rem;
+            text-transform: uppercase;
+            opacity: 0.8;
+            text-shadow: 0 0 10px rgba(224, 231, 255, 0.2);
+        }
+
+        /* Divine Button */
+        .cta-btn {
+            font-family: 'Cinzel', serif;
+            padding: 16px 45px;
+            background: transparent;
+            color: var(--soft-white);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .cta-btn:hover {
+            border-color: var(--angelic-gold);
+            background: rgba(255, 255, 255, 0.03);
+            box-shadow: 0 0 30px rgba(243, 229, 171, 0.25), inset 0 0 15px rgba(255,255,255,0.05);
+            text-shadow: 0 0 8px #fff;
+            transform: translateY(-3px);
+        }
+
+        /* --- Showcase / Sanctuary Section --- */
+        
+        .sanctuary {
+            padding: 140px 6rem;
+            background: linear-gradient(to bottom, transparent, rgba(6, 9, 19, 0.85) 50%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            letter-spacing: 8px;
+            font-weight: 400;
+            color: var(--soft-white);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(255,255,255,0.1);
+        }
+
+        .section-header p {
+            font-size: 0.95rem;
+            font-weight: 200;
+            letter-spacing: 3px;
+            color: var(--cosmic-iris);
+            opacity: 0.6;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 4rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 24px;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            border-color: rgba(243, 229, 171, 0.25);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.08), 0 0 30px rgba(243, 229, 171, 0.05);
+        }
+
+        .card-image-wrapper {
+            position: relative;
+            height: 440px;
+            overflow: hidden;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(0.95) saturate(0.85) sepia(0.05);
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s ease;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.06);
+            filter: brightness(0.95) contrast(1) saturate(1);
+        }
+
+        /* Dreamy Gradient Vignette Over Images */
+        .card-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(6, 9, 13, 0.95));
+        }
+
+        .card-info {
+            padding: 2.5rem;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.01));
+        }
+
+        .card-info h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: var(--soft-white);
+            letter-spacing: 3px;
+            transition: color 0.4s ease;
+        }
+
+        .card:hover .card-info h3 {
+            color: var(--angelic-gold);
+        }
+
+        .card-info p {
+            font-size: 0.9rem;
+            font-weight: 200;
+            color: #b3c5ef;
+            letter-spacing: 1.5px;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        /* --- Masterpiece Animations --- */
+        
+        @keyframes etherealReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+                filter: blur(15px);
+            }
+            50% {
+                opacity: 0.3;
+                filter: blur(5px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        /* Responsive Layouts */
+        @media (max-width: 1024px) {
+            nav { padding: 2rem 3rem; }
+            .angelic-title { font-size: 4rem; letter-spacing: 8px; }
+            .sanctuary { padding: 100px 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 1.5rem; flex-direction: column; gap: 1.5rem; position: absolute; background: transparent; backdrop-filter: none; }
+            .nav-links { gap: 2rem; }
+            .angelic-title { font-size: 2.8rem; letter-spacing: 5px; }
+            .hero-subtitle { font-size: 0.95rem; letter-spacing: 4px; }
+            .sanctuary { padding: 80px 1.5rem; }
+            .grid-container { gap: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sky-canvas"></div>
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="stars"></div>
+
+    <nav>
+        <a href="#" class="logo">AETHERIA</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#sanctuary">Sanctuary</a></li>
+            <li><a href="#essence">Essence</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="angelic-title">Where Dreams<br>Touch Eternity</h1>
+            <p class="hero-subtitle">Step into a realm woven from starlight, mist, and grace</p>
+            <button class="cta-btn" onclick="document.getElementById('sanctuary').scrollIntoView();">ASCEND</button>
+        </div>
+    </section>
+
+    <section class="sanctuary" id="sanctuary">
+        
+        <div class="section-header">
+            <h2>The Celestial Realms</h2>
+            <p>Tranquil fragments of an immortal paradise</p>
+        </div>
+
+        <div class="grid-container">
+            
+            <div class="card">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=600" alt="Celestial Light Rays" class="card-img">
+                </div>
+                <div class="card-info">
+                    <h3>Empyrean Rays</h3>
+                    <p>Infinite waves of crystalline illumination pouring down from the divine peaks.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1465447142348-e9952c393450?auto=format&fit=crop&q=80&w=600" alt="Angelic Valley Mist" class="card-img">
+                </div>
+                <div class="card-info">
+                    <h3>Seraphic Mist</h3>
+                    <p>Where the boundaries of earthly reality dissolve completely into absolute peace.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&q=80&w=600" alt="Pastel Nebula Clouds" class="card-img">
+                </div>
+                <div class="card-info">
+                    <h3>Eternal Grace</h3>
+                    <p>A quiet, timeless dance of pastel cosmic dust floating gently through the velvet void.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
